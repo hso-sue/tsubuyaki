@@ -1,0 +1,84 @@
+/* 全体のスタイル */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f6f6f6;
+}
+
+/* ヘッダーのスタイル */
+.header {
+  background-color: #1da1f2;
+  color: #fff;
+  padding: 16px;
+}
+
+/* 投稿一覧のコンテナのスタイル */
+.container {
+  margin: 16px;
+}
+
+/* 投稿のスタイル */
+.post {
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.05);
+  margin-bottom: 16px;
+  padding: 16px;
+}
+
+/* ユーザー名のスタイル */
+.post .user-name {
+  font-size: 16px;
+  font-weight: bold;
+  color: #1da1f2;
+}
+
+/* ツイートのテキストのスタイル */
+.post .tweet {
+  margin-top: 8px;
+  font-size: 14px;
+  color: #333;
+}
+
+/* 投稿日時のスタイル */
+.post .post-date {
+  margin-top: 8px;
+  font-size: 12px;
+  color: #999;
+}
+
+/* 投稿画像のスタイル */
+.post .post-image {
+  margin-top: 16px;
+  max-width: 100%;
+  border-radius: 4px;
+}
+
+/* ボタンのスタイル */
+.button {
+  background-color: #1da1f2;
+  border: none;
+  border-radius: 50px;
+  color: #fff;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: bold;
+  padding: 12px 24px;
+  margin-top: 16px;
+}
+
+/* ボタンのホバー時のスタイル */
+.button:hover {
+  background-color: #0c87c5;
+}
+
+/* 新規投稿ボタンのスタイル */
+.button {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 5px;
+}
