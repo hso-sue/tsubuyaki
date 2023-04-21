@@ -15,13 +15,13 @@ use App\Http\Controllers\TweetController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
-});
-
-Route::get('/index', [TweetController::class, 'index'])->name('tweet.index');
-Route::get('/create', [TweetController::class, 'create'])->name('tweet.create');
+Route::get('/index', [TweetController::class, 'index'])->name('tweets.index');
+Route::get('/create', [TweetController::class, 'create'])->name('tweets.create');
+Route::get('/store', [TweetController::class, 'store'])->name('tweets.store');
 
 
 Route::get('/dashboard', function () {

@@ -9,8 +9,8 @@
   <link rel="stylesheet" href="{{ asset('css/style.css') }}">
 </head>
 <body>
-
-  @yield('content')
-
+  <main class="main">
+    @yield('content')
+  </main>
 </body>
 </html>
