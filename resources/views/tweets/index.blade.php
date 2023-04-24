@@ -52,15 +52,7 @@
 
 <x-app-layout>
 
-  <header class="header">
-    <div class="header__inner">
-      <h1>Free Share</h1>
-
-    </div>
-    <div class="tweet-btn">
-      <a href="{{ route('tweets.create') }}" class="button">つぶやき投稿</a>
-    </div>
-  </header>
+<x-header title="Free Share" />
 
   <div class="post">
     @foreach ($tweets as $tweet)

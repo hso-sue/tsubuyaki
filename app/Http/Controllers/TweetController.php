@@ -39,7 +39,7 @@ class TweetController extends Controller
             $fileName = null;
         }
 
-        $tweet->content = $validated['contents'];
+        $tweet->content = $request->content;
         $tweet->image = $fileName;
         $tweet->user_id = Auth::id();
 
@@ -47,7 +47,7 @@ class TweetController extends Controller
 
         $tweet->save();
 
-        return redirect('create')
-            ->with('message', '投稿が完了しました');
+        return redirect('create');
+            // ->with('message', '投稿が完了しました');
     }
 }
