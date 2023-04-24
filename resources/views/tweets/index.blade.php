@@ -61,10 +61,10 @@
         <div class="tweet">{{ $tweet->content }}</div>
         <div class="post-date">{{ $tweet->created_at }}</div>
         @if ($tweet->image)
-          <img src="../../storage/{{ $tweet->image }}" alt="投稿画像" class="post-image">
+          <img src="../../storage/{{ $tweet->image }}" alt="投稿画像" class="tweet-image">
         @endif
-        <button class="button">よいね</button>
-        <button class="button">リツイ～ト</button>
+        <button class="button">good</button>
+        <button class="button">share</button>
       </div>
     @endforeach
   </div>

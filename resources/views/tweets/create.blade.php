@@ -15,9 +15,9 @@
 <form method="post" action="{{ route('tweets.store') }}" enctype="multipart/form-data">
   @csrf
   <div>
-    <label for="contents">つぶやきの内容</label><br>
-    <textarea class="contents__area">{{ old('contents') }}</textarea>
-    @error('contents'){{ $message }}@enderror
+    <label for="content">つぶやきの内容</label><br>
+    <textarea name="content" class="contents__area">{{ old('content') }}</textarea>
+    @error('content'){{ $message }}@enderror
   </div>
 
   <div>
@@ -27,7 +27,6 @@
   </div>
   <br>
   <button type="submit" class="button">つぶやく</button>
-
 </form>
 
 </x-app-layout>

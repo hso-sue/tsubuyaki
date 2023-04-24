@@ -27,10 +27,11 @@ class TweetController extends Controller
         // 送信されたリクエストは正
 
         // バリデーション済みデータの取得
+       
         $validated = $request->validated();
 
         $tweet = new Tweet();
-
+        
         if($file = $request->image) {
             $fileName = date('Ymd_His').'_'. $file->getClientOriginalName();
             $target_path = public_path('storage/');
@@ -42,12 +43,10 @@ class TweetController extends Controller
         $tweet->content = $request->content;
         $tweet->image = $fileName;
         $tweet->user_id = Auth::id();
-
-\Log::debug($tweet);
-
+        
         $tweet->save();
-
-        return redirect('create');
-            // ->with('message', '投稿が完了しました');
+        
+        return redirect('index');
+        
     }
 }

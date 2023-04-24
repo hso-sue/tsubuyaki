@@ -20,8 +20,7 @@
                         新規投稿
                     </x-nav-link>
                     @endauth
-
-                </div>
+                
             </div>
 
             @auth
