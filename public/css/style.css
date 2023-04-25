@@ -1,4 +1,4 @@
-/* 全体のスタイル */
+/* 共通部分 */
 
 * {
   box-sizing: border-box;
@@ -17,16 +17,12 @@ a {
   text-decoration: none;
 }
 
-a:hover {
-  opacity: .5;
-}
-
 .main {
   width: 60%;
   margin: 20px auto;
 }
 
-/* ヘッダーのスタイル */
+/* ヘッダー部分 */
 .header {
   background-color: #1da1f2;
   color: #fff;
@@ -39,13 +35,6 @@ a:hover {
   font-size: 22px;
 }
 
-.tweet-container {
-  border: 1px solid #ddd;
-  border-radius: 5px;
-  padding: 10px;
-  margin-bottom: 15px;
-}
-
 .auth {
   font-size: 18px;
   display: flex;
@@ -56,8 +45,9 @@ a:hover {
   margin-right: 20px
 }
 
-/* 投稿のスタイル */
-.post {
+/* トップページ */
+
+.tweet {
   background-color: #fff;
   border-radius: 5px;
   box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.05);
@@ -65,35 +55,44 @@ a:hover {
   padding: 16px;
 }
 
-/* ユーザー名のスタイル */
-.post .user-name {
+.tweet-container {
+  position: relative;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  padding: 10px;
+  margin-bottom: 15px;
+}
+
+.tweet-container:hover {
+  background: #f8f8f8;
+}
+
+.user-name {
   font-size: 16px;
   font-weight: bold;
   color: #1da1f2;
 }
 
-/* ツイートのテキストのスタイル */
-.post .tweet {
-  margin-top: 8px;
+.tweet-content {
   font-size: 14px;
   color: #333;
+  margin-top: 8px;
+  padding: 20px 10px;
+  line-height: 1.8;
 }
 
-/* 投稿日時のスタイル */
-.post .post-date {
+.tweet-date {
   margin-top: 8px;
   font-size: 12px;
   color: #999;
 }
 
-/* 投稿画像のスタイル */
-.post .post-image {
+.tweet-image {
   margin-top: 16px;
   max-width: 100%;
   border-radius: 3px;
 }
 
-/* ボタンのスタイル */
 .button {
   background-color: #1da1f2;
   border: none;
@@ -106,13 +105,32 @@ a:hover {
   margin-top: 16px;
 }
 
-/* ボタンのホバー時のスタイル */
 .button:hover {
   opacity: .8;
 }
 
+/* 編集と削除ボタン */
 
-.contents__area {
+.edit-container {
+  position: absolute;
+  display: flex;
+  top: 5px;
+  right: 5px;
+}
+
+.edit-image {
+  width: 30px;
+  opacity: .2;
+}
+
+.edit-image:hover {
+  width: 30px;
+  opacity: .6;
+}
+
+/* 投稿・編集ページ */
+
+.content__area {
   width: 100%;
   height: 200px;
 }

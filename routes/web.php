@@ -22,7 +22,10 @@ use App\Http\Controllers\TweetController;
 Route::get('/index', [TweetController::class, 'index'])->name('tweets.index');
 Route::get('/create', [TweetController::class, 'create'])->name('tweets.create');
 Route::post('/store', [TweetController::class, 'store'])->name('tweets.store');
-
+Route::get('/edit/{id}', [TweetController::class, 'edit'])->name('tweets.edit');
+Route::post('/update/{id}', [TweetController::class, 'update'])->name('tweets.update');
+Route::post('/destroy/{id}', [TweetController::class, 'destroy'])->name('tweets.destroy');
+Route::get('/show/{id}', [TweetController::class, 'show'])->name('tweets.show');
 
 Route::get('/dashboard', function () {
     return view('dashboard');

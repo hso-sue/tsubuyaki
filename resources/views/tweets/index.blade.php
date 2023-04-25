@@ -1,71 +1,39 @@
-{{-- @extends('layouts.app')
-
-@section('title', '投稿一覧 | TsubuYaki')
-    
-@section('content')
-
-<header class="header">
-  <div class="header__inner">
-    <h1>つぶやき一覧</h1>
-      @if (Route::has('login'))
-          <div class="auth">
-              @auth
-                <div class="auth__logout">
-                  <form method="POST" action="{{ route('logout') }}">
-                    @csrf
-                    <button type="submit">ログアウト</button>
-                  </form>
-                </div>
-              @else
-                <div class="auth__login">
-                  <a href="{{ route('login') }}">ログイン</a>
-                </div>
-                @if (Route::has('register'))
-                  <div class="auth__register">
-                    <a href="{{ route('register') }}">新規登録</a>
-                  </div>
-                @endif
-              @endauth
-          </div>
-        @endif
-  </div>
-  <div class="tweet-btn">
-    <a href="{{ route('tweets.create') }}" class="button">つぶやき投稿</a>
-  </div>
-</header>
-<div class="post">
-  @foreach ($tweets as $tweet)
-    <div class="tweet-container">
-      <div class="user-name">{{ $tweet->user->name }}</div>
-      <div class="tweet">{{ $tweet->content }}</div>
-      <div class="post-date">{{ $tweet->created_at }}</div>
-      @if ($tweet->image)
-        <img src="../../storage/{{ $tweet->image }}" alt="投稿画像" class="post-image">
-      @endif
-      <button class="button">よいね</button>
-      <button class="button">リツイ～ト</button>
-    </div>
-  @endforeach
-</div>
-
-@endsection --}}
-
 <x-app-layout>
 
 <x-header title="Free Share" />
 
-  <div class="post">
+  <div class="tweet">
     @foreach ($tweets as $tweet)
+    <a href="{{ route('tweets.show', ['id' => $tweet->id]) }}">
       <div class="tweet-container">
         <div class="user-name">{{ $tweet->user->name }}</div>
-        <div class="tweet">{{ $tweet->content }}</div>
-        <div class="post-date">{{ $tweet->created_at }}</div>
+        <div class="tweet-content">{{ $tweet->content }}</div>
+        <div class="tweet-date">{{ $tweet->created_at }}</div>
         @if ($tweet->image)
           <img src="../../storage/{{ $tweet->image }}" alt="投稿画像" class="tweet-image">
         @endif
         <button class="button">good</button>
         <button class="button">share</button>
+
+        @if ($tweet->user_id == Auth::id())
+          <div class="edit-container">
+            <div class="edit-button">
+              <a href="{{ route('tweets.edit', ['id' => $tweet->id]) }}">
+                <img src="{{ asset('images/edit_pen.png')}}"alt="編集" class="edit-image">
+              </a>
+            </div>
+            <div class="delete-button">
+              <form method="post" action="{{ route('tweets.destroy', ['id' => $tweet->id]) }}">
+                @csrf
+                <button type="submit">
+                  <img src="{{ asset('images/dust_box.png')}}"alt="削除" class="edit-image">
+                </button>
+              </form>
+            </div>
+          </div>
+        @endif
       </div>
+    </a>
     @endforeach
   </div>
   

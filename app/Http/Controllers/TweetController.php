@@ -13,7 +13,8 @@ class TweetController extends Controller
 {
     public function index()
     {
-        $tweets = Tweet::all();
+        $tweets = Tweet::orderBy('created_at', 'desc')->get();
+
         return view('tweets.index', ['tweets' => $tweets]);
     }
 
@@ -24,12 +25,6 @@ class TweetController extends Controller
 
     public function store(StorePostRequest $request)
     {
-        // 送信されたリクエストは正
-
-        // バリデーション済みデータの取得
-       
-        $validated = $request->validated();
-
         $tweet = new Tweet();
         
         if($file = $request->image) {
@@ -47,6 +42,50 @@ class TweetController extends Controller
         $tweet->save();
         
         return redirect('index');
+    }
+
+    public function show($id) 
+    {
+        $tweet = Tweet::find($id);
+
+        return view('tweets.show', ['tweet' => $tweet]);
+    }
+
+    public function edit($id)
+    {
+        $tweet = Tweet::find($id);
+        // SELECT * FROM tweets WHERE id = $id LIMIT 1;
+        if(Auth::id() != $tweet->user_id) {
+            return redirect('index');
+        }
+        return view('tweets.edit', ['tweet' => $tweet]);
+    }
+
+    public function update(StorePostRequest $request, $id)
+    {
+        $tweet = Tweet::find($id);
+
+        if($file = $request->image) {
+            $fileName = date('Ymd_His').'_'. $file->getClientOriginalName();
+            $target_path = public_path('storage/');
+            $file->move($target_path, $fileName);
+        } else {
+            $fileName = null;
+        }
+
+        $tweet->content = $request->content;
+        $tweet->image = $fileName;
+        $tweet->user_id = Auth::id();
         
+        $tweet->save();
+        return redirect('index');
+    }
+
+    public function destroy($id) 
+    {
+        $tweet = Tweet::find($id);
+        $tweet->delete();
+
+        return redirect('index');
     }
 }

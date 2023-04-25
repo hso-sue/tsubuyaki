@@ -1,22 +1,12 @@
-{{-- @extends('layouts.app')
-
-@section('title', 'つぶやき投稿 | TsubuYaki')
-
-@section('content')
-
-@if (session('message'))
-    <div class="message-zone">{{ session('message') }}</div>
-@endif --}}
-
 <x-app-layout>
 
-<x-header title="つぶやき投稿" />
+<x-header title="新規投稿" />
 
 <form method="post" action="{{ route('tweets.store') }}" enctype="multipart/form-data">
   @csrf
   <div>
-    <label for="content">つぶやきの内容</label><br>
-    <textarea name="content" class="contents__area">{{ old('content') }}</textarea>
+    <label for="content">投稿内容</label><br>
+    <textarea name="content" class="content__area">{{ old('content') }}</textarea>
     @error('content'){{ $message }}@enderror
   </div>
 
@@ -26,7 +16,7 @@
     @error('image'){{ $message }}@enderror
   </div>
   <br>
-  <button type="submit" class="button">つぶやく</button>
+  <button type="submit" class="button">投稿</button>
 </form>
 
 </x-app-layout>
