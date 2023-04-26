@@ -7,6 +7,7 @@ use App\Http\Requests\StorePostRequest;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Tweet;
 use App\Models\User;
+use App\Models\Comment;
 
 
 class TweetController extends Controller
@@ -47,8 +48,9 @@ class TweetController extends Controller
     public function show($id) 
     {
         $tweet = Tweet::find($id);
+        $comments = Comment::orderBy('created_at', 'desc')->get();
 
-        return view('tweets.show', ['tweet' => $tweet]);
+        return view('tweets.show', compact('tweet', 'comments'));
     }
 
     public function edit($id)

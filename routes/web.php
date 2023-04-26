@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TweetController;
+use App\Http\Controllers\CommentController;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,9 +28,12 @@ Route::post('/update/{id}', [TweetController::class, 'update'])->name('tweets.up
 Route::post('/destroy/{id}', [TweetController::class, 'destroy'])->name('tweets.destroy');
 Route::get('/show/{id}', [TweetController::class, 'show'])->name('tweets.show');
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+Route::post('/{tweet}/comments', [CommentController::class, 'store'])->name('comments.store');
+Route::post('/comments/destroy/{id}/{tweetId}', [CommentController::class, 'destroy'])->name('comments.destroy');
+
+// Route::get('/dashboard', function () {
+//     return view('dashboard');
+// })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

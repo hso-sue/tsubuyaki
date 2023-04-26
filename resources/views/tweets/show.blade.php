@@ -38,4 +38,39 @@
     </div>
   </div>
 
+  @auth
+  <div class="comment">
+    <div class="comment__form">
+      <form method="post" action="{{ route('comments.store', ['tweet' => $tweet]) }}">
+        @csrf
+        <textarea name="content" class="comment__content-area" placeholder="コメントを入力できます">{{ old('content') }}</textarea>
+        @error('content'){{ $message }}@enderror
+        <button type="submit" class="button">Comment</button>
+      </form>
+    </div>
+    
+    <div class="comment-list">
+      <h2>コメント一覧</h2><br><hr><br>
+      @foreach ($comments as $comment)
+        <div class="comment-container">
+          <div class="comment-user-name">{{ $comment->user->name }}</div>
+          <div class="comment-content">{{ $comment->content }}</div>
+          @if ($tweet->user_id == Auth::id())
+          <div class="edit-container">
+            <div class="delete-button">
+              <form method="post" action="{{ route('comments.destroy', ['id' => $comment->id, 'tweetId' => $tweet->id]) }}">
+                @csrf
+                <button type="submit">
+                  <img src="{{ asset('images/dust_box.png')}}"alt="削除" class="edit-image">
+                </button>
+              </form>
+            </div>
+          </div>
+          @endif
+        </div>
+      @endforeach
+    </div>
+  </div> 
+  @endauth
+
 </x-app-layout>

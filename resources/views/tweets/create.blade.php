@@ -16,7 +16,7 @@
     @error('image'){{ $message }}@enderror
   </div>
   <br>
-  <button type="submit" class="button">投稿</button>
+  <button type="submit" class="button">Tweet</button>
 </form>
 
 </x-app-layout>
